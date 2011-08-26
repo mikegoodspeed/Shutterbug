@@ -30,6 +30,7 @@
         self.fetchedResultsController = frc;
         [frc release];
         self.titleKey = @"title";
+        self.title = photographer.name;
     }
     return self;
 }

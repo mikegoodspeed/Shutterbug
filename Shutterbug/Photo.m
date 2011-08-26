@@ -20,6 +20,7 @@
 + (Photo *)photoWithFlickrData:(NSDictionary *)flickrData
         inManagedObjectContext:(NSManagedObjectContext *)context
 {
+    NSLog(@"flickrData=%@", flickrData);
     Photo *photo = NULL;
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     request.entity = [NSEntityDescription entityForName:@"Photo"
