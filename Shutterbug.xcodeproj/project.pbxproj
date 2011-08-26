@@ -28,6 +28,7 @@
 		274F310D140816C200F3C10F /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 274F310C140816C200F3C10F /* FlickrFetcher.m */; };
 		274F311314081B9F00F3C10F /* PhotographersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274F311214081B9F00F3C10F /* PhotographersTableViewController.m */; };
 		274F311614081FCB00F3C10F /* PhotosByPhotographerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274F311514081FCA00F3C10F /* PhotosByPhotographerTableViewController.m */; };
+		274F312114082CDE00F3C10F /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274F312014082CDE00F3C10F /* PhotoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,8 @@
 		274F311214081B9F00F3C10F /* PhotographersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotographersTableViewController.m; sourceTree = "<group>"; };
 		274F311414081FCA00F3C10F /* PhotosByPhotographerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosByPhotographerTableViewController.h; sourceTree = "<group>"; };
 		274F311514081FCA00F3C10F /* PhotosByPhotographerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosByPhotographerTableViewController.m; sourceTree = "<group>"; };
+		274F311F14082CDE00F3C10F /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		274F312014082CDE00F3C10F /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +127,8 @@
 				274F30DD1408142C00F3C10F /* ShutterbugAppDelegate.m */,
 				274F30DF1408142C00F3C10F /* MainWindow.xib */,
 				274F30E21408142C00F3C10F /* Shutterbug.xcdatamodeld */,
+				274F311F14082CDE00F3C10F /* PhotoViewController.h */,
+				274F312014082CDE00F3C10F /* PhotoViewController.m */,
 				274F30ED140815B500F3C10F /* Photo.h */,
 				274F30EE140815B500F3C10F /* Photo.m */,
 				274F311414081FCA00F3C10F /* PhotosByPhotographerTableViewController.h */,
@@ -249,6 +254,7 @@
 				274F310D140816C200F3C10F /* FlickrFetcher.m in Sources */,
 				274F311314081B9F00F3C10F /* PhotographersTableViewController.m in Sources */,
 				274F311614081FCB00F3C10F /* PhotosByPhotographerTableViewController.m in Sources */,
+				274F312114082CDE00F3C10F /* PhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,23 +17,20 @@
     if ((self = [super initWithStyle:UITableViewStylePlain]))
     {
         NSFetchRequest *request = [[NSFetchRequest alloc] init];
-        request.entity = [NSEntityDescription entityForName:@"Photographer"
-                                     inManagedObjectContext:context];
-        NSSortDescriptor *sorter = [NSSortDescriptor
-                                    sortDescriptorWithKey:@"name"
-                                    ascending:YES];
+        request.entity = [NSEntityDescription entityForName:@"Photographer" inManagedObjectContext:context];
+        NSSortDescriptor *sorter = [NSSortDescriptor sortDescriptorWithKey:@"name"
+                                                                 ascending:YES
+                                                                  selector:@selector(localizedCaseInsensitiveCompare:)];
         request.sortDescriptors = [NSArray arrayWithObject:sorter];
         request.predicate = nil;
         request.fetchBatchSize = 20;
-        NSFetchedResultsController *frc = [[NSFetchedResultsController alloc]
-                                           initWithFetchRequest:request
-                                           managedObjectContext:context
-                                           sectionNameKeyPath:nil
-                                           cacheName:@"Photographers"];
+        NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                              managedObjectContext:context
+                                                                                sectionNameKeyPath:nil
+                                                                                         cacheName:@"Photographers"];
         [request release];
         self.fetchedResultsController = frc;
         [frc release];
-        
         self.titleKey = @"name";
     }
     return self;
@@ -42,10 +39,10 @@
 - (void)managedObjectSelected:(NSManagedObject *)managedObject
 {
     Photographer *photographer = (Photographer *)managedObject;
-    PhotosByPhotographerTableViewController *pbptvc = 
-        [[PhotosByPhotographerTableViewController alloc]
-         initWithPhotographer:photographer];
+    PhotosByPhotographerTableViewController *pbptvc = [[PhotosByPhotographerTableViewController alloc]
+                                                       initWithPhotographer:photographer];
     [self.navigationController pushViewController:pbptvc animated:YES];
+    [pbptvc release];
 }
 
 @end

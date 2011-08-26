@@ -22,21 +22,18 @@
 
 @synthesize persistentStoreCoordinator=__persistentStoreCoordinator;
 
-- (BOOL)              application:(UIApplication *)application
-    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     NSArray *photos = [FlickrFetcher recentGeoreferencedPhotos];
     for (NSDictionary *photoInfo in photos)
     {
-        [Photo photoWithFlickrData:photoInfo 
-            inManagedObjectContext:self.managedObjectContext];
+        [Photo photoWithFlickrData:photoInfo inManagedObjectContext:self.managedObjectContext];
     }
     [self saveContext];
     
-    PhotographersTableViewController *ptvc = 
-        [[PhotographersTableViewController alloc]
-         initInManagedObjectContext:self.managedObjectContext];
+    PhotographersTableViewController *ptvc = [[PhotographersTableViewController alloc]
+                                              initInManagedObjectContext:self.managedObjectContext];
     UINavigationController *navcon = [[UINavigationController alloc] init];
     [navcon pushViewController:ptvc animated:NO];
     
