@@ -25,6 +25,7 @@
     NSError *error = NULL;
     photographer = [[context executeFetchRequest:request error:&error]
                     lastObject];
+    [request release];
     if (!error && !photographer)
     {
         photographer = [NSEntityDescription

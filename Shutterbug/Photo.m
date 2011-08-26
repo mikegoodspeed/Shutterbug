@@ -28,6 +28,7 @@
                          [flickrData objectForKey:@"id"]];
     NSError *error = NULL;
     photo = [[context executeFetchRequest:request error:&error] lastObject];
+    [request release];
     if (!error && !photo)
     {
         photo = [NSEntityDescription insertNewObjectForEntityForName:@"Photo"

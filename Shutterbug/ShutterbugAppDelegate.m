@@ -13,6 +13,7 @@
 
 @implementation ShutterbugAppDelegate
 
+@synthesize navcon = _navcon;
 
 @synthesize window=_window;
 
@@ -34,11 +35,12 @@
     
     PhotographersTableViewController *ptvc = [[PhotographersTableViewController alloc]
                                               initInManagedObjectContext:self.managedObjectContext];
-    UINavigationController *navcon = [[UINavigationController alloc] init];
-    [navcon pushViewController:ptvc animated:NO];
-    
-    [self.window addSubview:navcon.view];
+    self.navcon = [[UINavigationController alloc] init];
+    [self.navcon pushViewController:ptvc animated:NO];
+    [self.window addSubview:self.navcon.view];
     [self.window makeKeyAndVisible];
+    [ptvc release];
+    [self.navcon release];
     return YES;
      
 }
@@ -82,6 +84,7 @@
 - (void)dealloc
 {
     [_window release];
+    [_navcon release];
     [__managedObjectContext release];
     [__managedObjectModel release];
     [__persistentStoreCoordinator release];
