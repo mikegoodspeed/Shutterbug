@@ -38,7 +38,8 @@
 - (void)managedObjectSelected:(NSManagedObject *)managedObject
 {
     Photo *photo = (Photo *)managedObject;
-    PhotoViewController *pvc = [[PhotoViewController alloc] initWithPhoto:photo];
+    PhotoViewController *pvc = [[PhotoViewController alloc] init];
+    pvc.photo = photo;
     [self.navigationController pushViewController:pvc animated:YES];
     [pvc release];
 }

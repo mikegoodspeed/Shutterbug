@@ -20,7 +20,7 @@
 + (Photo *)photoWithFlickrData:(NSDictionary *)flickrData
         inManagedObjectContext:(NSManagedObjectContext *)context
 {
-    NSLog(@"flickrData=%@", flickrData);
+//    NSLog(@"flickrData=%@", flickrData);
     Photo *photo = NULL;
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     request.entity = [NSEntityDescription entityForName:@"Photo"
@@ -43,6 +43,21 @@
                                           inManagedObjectContext:context];
     }
     return photo;
+}
+
+
+- (void)processImageDataWithBlock:(void (^)(NSData *imageData))processImage
+{
+    NSString *url = self.imageURL;
+    dispatch_queue_t callerQueue = dispatch_get_current_queue();
+    dispatch_queue_t downloadQueue = dispatch_queue_create("Flikr downloader in Photo", NULL);
+    dispatch_async(downloadQueue, ^{
+        NSData *imageData = [FlickrFetcher imageDataForPhotoWithURLString:url];
+        dispatch_async(callerQueue, ^{
+            processImage(imageData);
+        });
+    });
+    dispatch_release(downloadQueue);
 }
 
 @end

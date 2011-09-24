@@ -28,7 +28,8 @@
 		274F310D140816C200F3C10F /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 274F310C140816C200F3C10F /* FlickrFetcher.m */; };
 		274F311314081B9F00F3C10F /* PhotographersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274F311214081B9F00F3C10F /* PhotographersTableViewController.m */; };
 		274F311614081FCB00F3C10F /* PhotosByPhotographerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274F311514081FCA00F3C10F /* PhotosByPhotographerTableViewController.m */; };
-		274F312114082CDE00F3C10F /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 274F312014082CDE00F3C10F /* PhotoViewController.m */; };
+		27A5AA79142E35430095F1D5 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5AA77142E35430095F1D5 /* PhotoViewController.m */; };
+		27A5AA7A142E35430095F1D5 /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27A5AA78142E35430095F1D5 /* PhotoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,8 +72,9 @@
 		274F311214081B9F00F3C10F /* PhotographersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotographersTableViewController.m; sourceTree = "<group>"; };
 		274F311414081FCA00F3C10F /* PhotosByPhotographerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosByPhotographerTableViewController.h; sourceTree = "<group>"; };
 		274F311514081FCA00F3C10F /* PhotosByPhotographerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosByPhotographerTableViewController.m; sourceTree = "<group>"; };
-		274F311F14082CDE00F3C10F /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
-		274F312014082CDE00F3C10F /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		27A5AA76142E35430095F1D5 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		27A5AA77142E35430095F1D5 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		27A5AA78142E35430095F1D5 /* PhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,10 +129,11 @@
 				274F30DD1408142C00F3C10F /* ShutterbugAppDelegate.m */,
 				274F30DF1408142C00F3C10F /* MainWindow.xib */,
 				274F30E21408142C00F3C10F /* Shutterbug.xcdatamodeld */,
-				274F311F14082CDE00F3C10F /* PhotoViewController.h */,
-				274F312014082CDE00F3C10F /* PhotoViewController.m */,
 				274F30ED140815B500F3C10F /* Photo.h */,
 				274F30EE140815B500F3C10F /* Photo.m */,
+				27A5AA76142E35430095F1D5 /* PhotoViewController.h */,
+				27A5AA77142E35430095F1D5 /* PhotoViewController.m */,
+				27A5AA78142E35430095F1D5 /* PhotoViewController.xib */,
 				274F311414081FCA00F3C10F /* PhotosByPhotographerTableViewController.h */,
 				274F311514081FCA00F3C10F /* PhotosByPhotographerTableViewController.m */,
 				274F30EA140815A000F3C10F /* Photographer.h */,
@@ -229,6 +232,7 @@
 			files = (
 				274F30D81408142C00F3C10F /* InfoPlist.strings in Resources */,
 				274F30E11408142C00F3C10F /* MainWindow.xib in Resources */,
+				27A5AA7A142E35430095F1D5 /* PhotoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,7 +258,7 @@
 				274F310D140816C200F3C10F /* FlickrFetcher.m in Sources */,
 				274F311314081B9F00F3C10F /* PhotographersTableViewController.m in Sources */,
 				274F311614081FCB00F3C10F /* PhotosByPhotographerTableViewController.m in Sources */,
-				274F312114082CDE00F3C10F /* PhotoViewController.m in Sources */,
+				27A5AA79142E35430095F1D5 /* PhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +363,7 @@
 				274F30E91408142C00F3C10F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

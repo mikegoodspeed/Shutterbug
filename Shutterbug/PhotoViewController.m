@@ -2,7 +2,7 @@
 //  PhotoViewController.m
 //  Shutterbug
 //
-//  Created by Mike Goodspeed on 8/26/11.
+//  Created by Mike Goodspeed on 9/24/11.
 //  Copyright 2011 Mike Goodspeed. All rights reserved.
 //
 
@@ -10,94 +10,79 @@
 #import "FlickrFetcher.h"
 
 @interface PhotoViewController()
-@property (nonatomic, retain) UIScrollView *scrollView;
-@property (nonatomic, retain) UIImageView *imgView;
+@property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, retain) IBOutlet UIImageView *imageView;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *spinner;
 @end
 
 @implementation PhotoViewController
 
-@synthesize photo = photo_;
-@synthesize scrollView = scrollView_;
-@synthesize imgView = imgView_;
+@synthesize photo = _photo;
+@synthesize scrollView = _scrollView;
+@synthesize imageView = _imageView;
+@synthesize spinner = _spinner;
 
-- initWithPhoto:(Photo *)photo
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    if ((self = [super init]))
-    {
-        self.title = photo.title;
-        self.photo = photo;
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
     }
     return self;
 }
 
 - (void)dealloc
 {
-    [self.photo release];
+    [_scrollView release];
+    [_imageView release];
+    [_spinner release];
+    [_photo release];
     [super dealloc];
 }
 
-- (void)loadView
+- (void)didReceiveMemoryWarning
 {
-    NSData *imgData = [FlickrFetcher imageDataForPhotoWithURLString:self.photo.imageURL];
-    UIImage *image = [UIImage imageWithData:imgData];
-    self.imgView = [[UIImageView alloc] initWithImage:image];
-    [self.imgView release];
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
     
-    CGRect frame = [[UIScreen mainScreen] applicationFrame];
-    self.scrollView = [[UIScrollView alloc] initWithFrame:frame];
-    [self.scrollView release];
-    
-    self.scrollView.contentSize = image.size;
-    self.scrollView.minimumZoomScale = 0.1;
-    self.scrollView.maximumZoomScale = 6.0;
-    self.scrollView.zoomScale = 2.0;
-    self.scrollView.delegate = self;
-    [self.scrollView addSubview:self.imgView];
-    self.view = self.scrollView;
+    // Release any cached data, images, etc that aren't in use.
 }
+
+#pragma mark - View lifecycle
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    // Set up the default zoom and origin
-    CGRect viewRect = self.scrollView.bounds;
-    UIImage *image = self.imgView.image;
-    CGFloat screenAspect = viewRect.size.width / viewRect.size.height;
-    CGFloat imageAspect = image.size.width / image.size.height;
-    
-    CGRect zoomRect;
-    CGFloat height = image.size.height;
-    CGFloat width = image.size.width;
-    if (imageAspect > screenAspect)
-    {
-        zoomRect = CGRectMake(0, 0, height * screenAspect, height);
-    }
-    else
-    {
-        zoomRect = CGRectMake(0, 0, width, width / screenAspect);
-    }
-    zoomRect.origin.x = (width - zoomRect.size.width) / 2;
-    zoomRect.origin.y = (height - zoomRect.size.height) / 2;
-    
-    [self.scrollView zoomToRect:zoomRect animated:NO];
-    
-    // Set the minimum zoom
-    CGFloat xscale = viewRect.size.width / image.size.width;
-    CGFloat yscale = viewRect.size.height / image.size.height;
-    
-    CGFloat minscale = (xscale < yscale ? xscale : yscale);
-    self.scrollView.minimumZoomScale = minscale;
     [super viewWillAppear:animated];
+    [self.spinner startAnimating];
+    [self.photo processImageDataWithBlock:^(NSData *imageData){
+        UIImage *image = [UIImage imageWithData:imageData];
+        self.imageView.image = image;
+        self.imageView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+        self.scrollView.contentSize = image.size;
+        [self.spinner stopAnimating];
+    }];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewDidLoad
 {
-    [super viewDidAppear:animated];
-    [self.scrollView flashScrollIndicators];
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
 }
 
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+- (void)viewDidUnload
 {
-    return self.imgView;
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+    self.scrollView = nil;
+    self.imageView = nil;
+    self.spinner = nil;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 @end

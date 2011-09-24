@@ -23,4 +23,6 @@
 @property (nonatomic, retain) NSString * uniqueId;
 @property (nonatomic, retain) Photographer * whoTook;
 
+
+- (void)processImageDataWithBlock:(void (^)(NSData *imageData))processImage;
 @end
